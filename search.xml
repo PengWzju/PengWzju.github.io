@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[诫子书]]></title>
+    <url>%2F2019%2F01%2F06%2F%E8%AF%AB%E5%AD%90%E4%B9%A6%2F</url>
+    <content type="text"><![CDATA[诫子书 诸葛亮文言文 《艺文类聚》夫君子之行，静以修身，俭以养德。非澹泊无以明志，非宁静无以致远。夫学须静也，才须学也，非学无以成才，非志无以成学。慆慢则不能励精，险躁则不能治性。年与时驰，意与日去，遂成枯落，多不接世，悲守穷庐，将复何及！ 白话文君子的行为操守，从宁静来提高自身的修养，以节俭来培养自己的品德。不恬静寡欲无法明确志向，不排除外来干扰无法到远大目标。学习必须静心专一，而才干来自学习。所以不学习就无法增长才干，没有志向就无法使学习有所成就。放纵懒散就无法振奋精神，急躁冒险就不能陶冶性情。年华随时光而飞驰，意志随岁月而流逝。最终哭败零落，大多不接触世事，不为社会所用，只能悲哀地做守着那穷困地居舍，其时悔恨有怎么来得及？]]></content>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F01%2F05%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
