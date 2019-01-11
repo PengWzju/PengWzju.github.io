@@ -112,7 +112,8 @@
 <meta property="og:description" content="全文翻译自http://www.tldp.org/LDP/tlk/tlk.html  Title PageThis book is for Linux enthusiasts who want to know how the linux kernel works. It is not an internals manual. Rather it describes the principles a">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.tldp.org/LDP/tlk/logos/sit3-bwo-tran.1.gif">
-<meta property="og:updated_time" content="2019-01-10T14:18:06.188Z">
+<meta property="og:image" content="http://www.tldp.org/LDP/tlk/basics/board.gif">
+<meta property="og:updated_time" content="2019-01-11T14:40:04.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Linux Kernel">
 <meta name="twitter:description" content="全文翻译自http://www.tldp.org/LDP/tlk/tlk.html  Title PageThis book is for Linux enthusiasts who want to know how the linux kernel works. It is not an internals manual. Rather it describes the principles a">
@@ -404,12 +405,24 @@
                 
               
 
-              <time title="创建时间：2019-01-10 19:48:31 / 修改时间：22:18:06" itemprop="dateCreated datePublished" datetime="2019-01-10T19:48:31+08:00">2019-01-10</time>
+              <time title="创建时间：2019-01-10 19:48:31" itemprop="dateCreated datePublished" datetime="2019-01-10T19:48:31+08:00">2019-01-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-11 22:40:04" itemprop="dateModified" datetime="2019-01-11T22:40:04+08:00">2019-01-11</time>
               
             
           </span>
@@ -461,7 +474,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">10k</span>
+                <span title="本文字数">23k</span>
               
 
               
@@ -475,7 +488,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">9 分钟</span>
+                <span title="阅读时长">21 分钟</span>
               
             </div>
           
@@ -515,6 +528,60 @@
 <p>但是，Alpha AXP只是Linux运行的众多硬件平台之一。大多数Linux内核都在基于Intel的处理器系统上运行，但越来越多的非Intel Linux系统正变得越来越普遍。其中包括Alpha AXP，ARM，MIPS,Sparc和PowerPC。我本来可以使用这些平台中的任何一个编写这本书，但我的背景和使用Linux的技术经验是基于Alpha AXP的Linux，ARM上也有一点经验。这就是本书有时以非英特尔硬件为例说明一些关键点的原因。值得提醒的是，大约95%的Linux内核源代码对于它运行的所有硬件平台都是通用的。同样，本书约95%是与机器无关的Linux内核。</p>
 <h2 id="Reader-Profile"><a href="#Reader-Profile" class="headerlink" title="Reader Profile"></a>Reader Profile</h2><p>This book does not make any assumptions about the knowledge or experience of the reader. I believe that interest in the subject matter will encourage a process of self education where neccessary. That said, a degree of familiarity with computers, preferably the PC will help the reader derive real benefit from the material, as will some knowledge of the C programming language.</p>
 <p>这本书没有假设读者具有任何相关的知识和经验。我认为当需要时，对主题问题的兴趣会促使自我学习的过程。也就是说，对计算机，特别是个人电脑一定程度的熟悉，以及对C编程语言有一些了解，将会帮助读者从本书中获益。</p>
+<h2 id="Oganisation-of-this-Book"><a href="#Oganisation-of-this-Book" class="headerlink" title="Oganisation of this Book"></a>Oganisation of this Book</h2><p>This book is not intended to be used as an internals manual for Linux. Instead it is an introduction to operating systems in general and to Linux in particular. The chapters each follow my rule of “working from the general to the particular”. They first give an overview of the kernel subsystem that they are describing before launching into its gory details.</p>
+<p>这本书并没有打算用来作为Linux手册。相反，它是对操作系统做整体介绍，特别是Linux。每章都遵循我的“从一般到特殊入手”的规则。在进入内核子系统复杂的细节前，首先给出整体概览。</p>
+<p>I have deliberately not described the kernel’s algorithms, its methods of doing things, in terms of routine_X() calls routine_Y() which increments the foo field of the bar data structure. You can read the code to find these things out. Whenever I need to understand a piece of code or describe it to someone else I often start with drawing its data structures on the white-board. So, I have described many of the relevant kernel data structures and their interrelationships in a fair amount of detail.</p>
+<p>我故意没有描述内核算法，内核算法是实现功能的方法，比如例程routine_X()调用routine_Y(),使其bar数据结构中foo字段加一。你可以阅读代码弄清原理。无论什么时候，当我需要理解一段代码或者将其讲述给其他人时，我经常在白板上写下它的数据结构。因此，我已经相对详细地描述了许多相关的内核数据结构及其相互关系。</p>
+<p>Each chapter is fairly independent, like the Linux kernel subsystem that they each describe. Sometimes, though, there are linkages; for example you cannot describe a process without understanding how virtual memory works.</p>
+<p>每个章节相对独立，像Linux内核子系统一样它们不言自明。不过，有时它们互相联系；例如，不理解虚拟内存如何工作，你描述不了一个进程。</p>
+<p>The Hardware Basics chapter (Chapter  hw-basics-chapter) gives a brief introduction to the modern PC. An operating system has to work closely with the hardware system that acts as its foundations. The operating system needs certain services that can only be provided by the hardware. In order to fully understand the Linux operating system, you need to understand the basics of the underlying hardware.</p>
+<p>硬件基础章节简单讲述了现代PC。操作系统必须和硬件系统联系紧密，因为它们是基础。操作系统需要的某种服务只能由硬件提供。为了完全理解Linux操作系统，你需要理解底层硬件基本内容。</p>
+<p>The Software Basics chapter (Chapter  sw-basics-chapter) introduces basic software principles and looks at assembly and C programing languages. It looks at the tools that are used to build an operating system like Linux and it gives an overview of the aims and functions of an operating system.</p>
+<p>软件基础章节介绍基本的软件原理，以及汇编和C编程语言。该章关注了构建像Linux的操作系统的工具，并且给出了操作系统的目标和功能概述。</p>
+<p>The Memory Management chapter (Chapter  mm-chapter) describes the way that Linux handles the physical and virtual memory in the system.</p>
+<p>内存管理章节描述了系统中，Linux管理物理和虚拟内存的方式。</p>
+<p>The Processes chapter (Chapter  processes-chapter) describes what a process is and how the Linux kernel creates, manages and deletes the processes in the system.</p>
+<p>进程章节描述了进程是什么以及系统中，Linux内核如何创建，管理和删除进程。</p>
+<p>Processes communicate with each other and with the kernel to coordinate their activities. Linux supports a number of Inter-Process Communication (IPC) mechanisms. Signals and pipes are two of them but Linux also supports the System V IPC mechanisms named after the Unix<sup>TM</sup>release in which they first appeared. These interprocess communications mechanisms are described in Chapter  IPC-chapter.</p>
+<p>进程之间互相通信以及和和内核通信以协调其活动。Linux支持很多进程间通信（IPC）机制。信号和管道是其中的两个，但是Linux也支持System V IPC机制，其在Unix<sup>TM</sup>问世之后命名。这些进程间通信机制在IPC章节讲述。</p>
+<p>The Peripheral Component Interconnect (PCI) standard is now firmly established as the low cost, high performance data bus for PCs. The PCI chapter (Chapter  PCI-chapter) describes how the Linux kernel initializes and uses PCI buses and devices in the system.</p>
+<p>外围组件互连（PCI）标准现在已成为PC的低成本，高性能数据总线。PCI章节讲述了在系统中，Linux内核如何初始化并且使用PCI总线和设备。</p>
+<p>The Interrupts and Interrupt Handling chapter (Chapter  interrupt-chapter) looks at how the Linux kernel handles interrupts. Whilst the kernel has generic mechanisms and interfaces for handling interrupts, some of the interrupt handling details are hardware and architecture specific.</p>
+<p>中断和中断处理章节讲述了Linux内核如何处理中断。虽然内核有通用的机制和接口处理中断，但是一些中断处理的细节与硬件和架构相关。</p>
+<p>One of Linux’s strengths is its support for the many available hardware devices for the modern PC. The Device Drivers chapter (Chapter  dd-chapter) describes how the Linux kernel controls the physical devices in the system.</p>
+<p>Linux的一个优势是它支持现代PC的很多现有的硬件设备。设备驱动章节描述了在系统中，Linux内核如何控制物理设备。</p>
+<p>The File system chapter (Chapter  filesystem-chapter) describes how the Linux kernel maintains the files in the file systems that it supports. It describes the Virtual File System (VFS) and how the Linux kernel’s real file systems are supported.</p>
+<p>文件系统章节讲述了Linux内核如何维护它支持的文件系统中的文件。该章讲述了虚拟文件系统（VFS）以及如何支持Linux内核真实的文件系统。</p>
+<p>Networking and Linux are terms that are almost synonymous. In a very real sense Linux is a product of the Internet or World Wide Web (WWW). Its developers and users use the web to exchange information ideas, code and Linux itself is often used to support the networking needs of organizations. Chapter  networks-chapter describes how Linux supports the network protocols known collectively as TCP/IP.</p>
+<p>网络和Linux几乎是同义词。很大程度上，Linux是网络或者万维网（WWW）的产物。它的开发者和使用者通过网络交换信息思路，代码，并且Linux自身经常需要支持组织的网络需求。网络章节讲述了Linux如何支持合称为TCP/IP的网络协议。</p>
+<p>The Kernel Mechanisms chapter (Chapter  kernel-chapter) looks at some of the general tasks and mechanisms that the Linux kernel needs to supply so that other parts of the kernel work effectively together.</p>
+<p>内核机制章节讲述了Linux需要提供的通用任务和机制，以便内核的其它部分能够有效的一起工作。</p>
+<p>The Modules chapter (Chapter  modules-chapter) describes how the Linux kernel can dynamically load functions, for example file systems, only when they are needed.</p>
+<p>模块章节讲述了Linux如何在仅当需要时，动态地加载功能，例如文件系统。</p>
+<p>The Processors chapter (Chapter  processors-chapter) gives a brief description of some of the processors that Linux has been ported to.</p>
+<p>处理器章节简要介绍了Linux已移植到地一些处理器。</p>
+<p>The Sources chapter (Chapter  sources-chapter) describes where in the Linux kernel sources you should start looking for particular kernel functions.</p>
+<p>源代码章节讲述了Linux内核源代码中应该开始寻找特定内核函数的位置。</p>
+<h2 id="Conventions-used-in-this-Book"><a href="#Conventions-used-in-this-Book" class="headerlink" title="Conventions used in this Book"></a>Conventions used in this Book</h2><h1 id="Chapter-1-Hardware-Basics"><a href="#Chapter-1-Hardware-Basics" class="headerlink" title="Chapter 1 Hardware Basics"></a>Chapter 1 Hardware Basics</h1><p>An operating system has to work closely with the hardware system that acts as its foundations. The operating system needs certain services that can only be provided by the hardware. In order to fully understand the Linux operating system, you need to understand the basics of the underlying hardware. This chapter gives a brief introduction to that hardware: the modern PC.</p>
+<p>操作系统必须作为基础的硬件系统联系紧密。操作系统需要仅由硬件能提供的服务。为了全面地理解Linux操作系统，你需要理解基本的底层硬件。本章节简要介绍现代PC硬件。</p>
+<p>When the “Popular Electronics” magazine for January 1975 was printed with an illustration of the Altair 8080 on its front cover, a revolution started. The Altair 8080, named after the destination of an early Star Trek episode, could be assembled by home electronics enthusiasts for a mere $397. With its Intel 8080 processor and 256 bytes of memory but no screen or keyboard it was puny by today’s standards. Its inventor, Ed Roberts, coined the term “personal computer” to describe his new invention, but the term PC is now used to refer to almost any computer that you can pick up without needing help. By this definition, even some of the very powerful Alpha AXP systems are PCs.</p>
+<p>当1975年1月“电子趋势”杂志在其封面上描述Altair 8080的时候，一个变革开始了。Altair 8080，以早期的Star Trek时代命名，可以由家庭电子爱好者以仅仅$397组装。Intel 8080处理器和256字节内存，但是没有显示器或键盘，在现在的标准看来这有点搞笑。它的发明者，Ed Roberts，将其定义为“个人电脑”用来描述他的新发明，但是术语PC现在用来指代任何不需要帮助即可使用的任何电脑。通过这个定义，甚至一些非常强大的Alpha AXP系统也是PCs。</p>
+<p>Enthusiastic hackers saw the Altair’s potential and started to write software and build hardware for it. To these early pioneers it represented freedom; the freedom from huge batch processing mainframe systems run and guarded by an elite priesthood. Overnight fortunes were made by college dropouts fascinated by this new phenomenon, a computer that you could have at home on your kitchen table. A lot of hardware appeared, all different to some degree and software hackers were happy to write software for these new machines. Paradoxically it was IBM who firmly cast the mould of the modern PC by announcing the IBM PC in 1981 and shipping it to customers early in 1982. With its Intel 8088 processor, 64K of memory (expandable to 256K), two floppy disks and an 80 character by 25 lines Colour Graphics Adapter (CGA) it was not very powerful by today’s standards but it sold well. It was followed, in 1983, by the IBM PC-XT which had the luxury of a 10Mbyte hard drive. It was not long before IBM PC clones were being produced by a host of companies such as Compaq and the architecture of the PC became a de-facto standard. This de-facto standard helped a multitude of hardware companies to compete together in a growing market which, happily for consumers, kept prices low. Many of the system architectural features of these early PCs have carried over into the modern PC. For example, even the most powerful Intel Pentium Pro based system starts running in the Intel 8086’s addressing mode. When Linus Torvalds started writing what was to become Linux, he picked the most plentiful and reasonably priced hardware, an Intel 80386 PC.</p>
+<p>热情的黑客们看到了Altair的潜力，开始为它编写构建软件。对于这些早期的先锋们，它代表了自由；精英阶层运行和维护大批量处理大型机系统的自由。大学辍学者由于对这个现象的着迷感到一夜暴富，一台你可以在厨房桌子上拥有的电脑。出现了很多硬件，它们之间某种程度上都有所不同，但是软件黑客们非常开心为这些新机器编写软件。有点矛盾的是，正是IBM在1981年发布了IBM PC并在1982年初交付给客户，从而牢牢地塑造将现代PC的样式。虽然其Intel 8088处理器，64K内存（可扩展到256K），两张软盘和一台80字符由25行彩色图形适配器（CGA），在今天的标准看来并不是很强大，但是它卖得很好。随后，1983年，IBM PC-XT推出拥有10Mbyte硬盘的奢华PC。不久之前，IBM PC的兼容机由Compaq等众多公司生产，PC的架构成为事实上的标准。这个事实上的标准帮助众多硬件公司在一个不断增长的市场中共同竞争，很高兴这种竞争为消费者带来了低价。这些早期PC的许多系统架构特性已经延续到现代PC中。例如，即使最强大的基于Intel Pentium Pro系统也可以在Intel 8086的寻址模式下运行。当Linus Torvalds开始编写将要成为后来的Linux时，他选择了最丰富并且价格最合理的硬件，即Intel 80836 PC。</p>
+<p><div align="center"><img src="http://www.tldp.org/LDP/tlk/basics/board.gif" alt=""></div></p>
+<p><div align="center"> 图1.1：典型的PC主板</div></p>
+<p>Looking at a PC from the outside, the most obvious components are a system box, a keyboard, a mouse and a video monitor. On the front of the system box are some buttons, a little display showing some numbers and a floppy drive. Most systems these days have a CD ROM and if you feel that you have to protect your data, then there will also be a tape drive for backups. These devices are collectively known as the peripherals.</p>
+<p>从外部看一台PC，最明显的部分是一个机箱，键盘，鼠标，视频监控器。在机箱前有一些按钮，一些指示灯显示一些数字和一个软盘驱动器。如今大部分系统带有CD ROM并且，如果你觉得你必须保护你的数据，也有磁带驱动器用作备份。这些设备统称为外围设备。</p>
+<p>Although the CPU is in overall control of the system, it is not the only intelligent device. All of the peripheral controllers, for example the IDE controller, have some level of intelligence. Inside the PC (Figure  1.1) you will see a motherboard containing the CPU or microprocessor, the memory and a number of slots for the ISA or PCI peripheral controllers. Some of the controllers, for example the IDE disk controller may be built directly onto the system board.</p>
+<p>尽管CPU系统的整体控制，但是它不是唯一的只能设备。所有的外围设备控制器，例如IDE控制器，都有一定程度的智能。在PC里（图1.1），你会看到一块主板，其包含了CPU或微处理器，内存，和一些ISA或者PCI外围设备控制器的插槽。一些控制器，例如IDE磁盘控制器可能直接构建在系统板上。</p>
+<h2 id="1-1-The-CPU"><a href="#1-1-The-CPU" class="headerlink" title="1.1 The CPU"></a>1.1 The CPU</h2><p>The CPU, or rather microprocessor, is the heart of any computer system. The microprocessor calculates, performs logical operations and manages data flows by reading instructions from memory and then executing them. In the early days of computing the functional components of the microprocessor were separate (and physically large) units. This is when the term Central Processing Unit was coined. The modern microprocessor combines these components onto an integrated circuit etched onto a very small piece of silicon. The terms CPU, microprocessor and processor are all used interchangeably in this book.</p>
+<p>CPU，或者微处理器，是任何电脑系统的心脏。微处理器通过从内存中读取指令然后执行它们，完成计算，执行逻辑操作并且管理数据流等任务。早期微处理器计算功能组件是独立单元（体积很大）。此时创造了中央处理单元术语。现在微处理器将这些元件组合到蚀刻在非常小的硅片上的集成电路上。本书中，术语CPU，微处理器和处理器可以互换使用。</p>
+<p>Microprocessors operate on binary data; that is data composed of ones and zeros.</p>
+<p>微处理器在二进制数据上操作；其由一系列0和1组成。</p>
+<p>These ones and zeros correspond to electrical switches being either on or off. Just as 42 is a decimal number meaning “4 10s and 2 units”, a binary number is a series of binary digits each one representing a power of 2. In this context, a power means the number of times that a number is multiplied by itself. 10 to the power 1 ( 10<sup>1</sup> ) is 10, 10 to the power 2 ( 10<sup>2</sup> ) is 10x10, 1010<sup>3</sup> is 10x10x10 and so on. Binary 0001 is decimal 1, binary 0010 is decimal 2, binary 0011 is 3, binary 0100 is 4 and so on. So, 42 decimal is 101010 binary or (2 + 8 + 32 or 2<sup>1</sup>+2<sup>3</sup>+2<sup>5</sup> ). Rather than using binary to represent numbers in computer programs, another base, hexadecimal is usually used.</p>
+<p>这些0和1对应着电开关的开与关。就像42是一个十进制数意味着“4 个10s和2个1”，一个二进制数是一系列代表2的幂的二进制数字。本文中，指数意味着一个数乘以自身的次数。10的1次方（10<sup>1</sup>）是10，10的2次方（10<sup>2</sup>）是10X10，10的3次方（10<sup>3</sup>）是10X10X10等等。二进制001是十进制1，二进制0010是十进制2，二进制011是十进制3，二进制0100是十进制4等等。所以，十进制42是二进制101010或者(2 + 8 + 32或2<sup>1</sup>+2<sup>3</sup>+2<sup>5</sup>)。计算程序中并不是使用二进制代表数，通常使用16进制。</p>
+<p>In this base, each digital represents a power of 16. As decimal numbers only go from 0 to 9 the numbers 10 to 15 are represented as a single digit by the letters A, B, C, D, E and F. For example, hexadecimal E is decimal 14 and hexadecimal 2A is decimal 42 (two 16s) + 10). Using the C programming language notation (as I do throughout this book) hexadecimal numbers are prefaced by “0x”; hexadecimal 2A is written as 0x2A .</p>
+<p>十六进制下，每个数字代表16的一次幂。因为10进制数仅从0到9，数字10到15用字母A,B,C,D,E和F代替。例如，十六进制E是十进制14，十六进制2A是十进制42（两个16+10）。使用C编程语言语法（整本书所用）十六进制数以“0x”开头；十六进制2A写作0x2A。</p>
 
       
     </div>
@@ -571,6 +638,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/11/歌曲-青花瓷-周杰伦/" rel="prev" title="青花瓷">
+                青花瓷 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -647,7 +718,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -718,43 +789,10 @@
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://youtube.com/yourname" title="YouTube &rarr; https://youtube.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-youtube"></i>YouTube</a>
-                </span>
-              
-            </div>
-          
 
           
 
           
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://example.com" title="http://example.com" rel="noopener" target="_blank">Title</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://baidu.com/" title="https://baidu.com/" rel="noopener" target="_blank">baidu</a>
-                  </li>
-                
-              </ul>
-            </div>
           
 
           
@@ -776,7 +814,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Title-Page"><span class="nav-number">1.</span> <span class="nav-text">Title Page</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">2.</span> <span class="nav-text">Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reader-Profile"><span class="nav-number">2.1.</span> <span class="nav-text">Reader Profile</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Title-Page"><span class="nav-number">1.</span> <span class="nav-text">Title Page</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">2.</span> <span class="nav-text">Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reader-Profile"><span class="nav-number">2.1.</span> <span class="nav-text">Reader Profile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oganisation-of-this-Book"><span class="nav-number">2.2.</span> <span class="nav-text">Oganisation of this Book</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conventions-used-in-this-Book"><span class="nav-number">2.3.</span> <span class="nav-text">Conventions used in this Book</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-Hardware-Basics"><span class="nav-number">3.</span> <span class="nav-text">Chapter 1 Hardware Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-The-CPU"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 The CPU</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -815,7 +853,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">21k</span>
+    <span title="站点总字数">35k</span>
   
 
   
@@ -824,7 +862,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">19 分钟</span>
+    <span title="站点阅读时长">32 分钟</span>
   
 </div>
 
