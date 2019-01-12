@@ -113,7 +113,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.tldp.org/LDP/tlk/logos/sit3-bwo-tran.1.gif">
 <meta property="og:image" content="http://www.tldp.org/LDP/tlk/basics/board.gif">
-<meta property="og:updated_time" content="2019-01-11T14:40:04.595Z">
+<meta property="og:updated_time" content="2019-01-12T10:28:07.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Linux Kernel">
 <meta name="twitter:description" content="全文翻译自http://www.tldp.org/LDP/tlk/tlk.html  Title PageThis book is for Linux enthusiasts who want to know how the linux kernel works. It is not an internals manual. Rather it describes the principles a">
@@ -422,7 +422,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-11 22:40:04" itemprop="dateModified" datetime="2019-01-11T22:40:04+08:00">2019-01-11</time>
+                <time title="修改时间：2019-01-12 18:28:07" itemprop="dateModified" datetime="2019-01-12T18:28:07+08:00">2019-01-12</time>
               
             
           </span>
@@ -474,7 +474,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">23k</span>
+                <span title="本文字数">35k</span>
               
 
               
@@ -488,7 +488,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">21 分钟</span>
+                <span title="阅读时长">31 分钟</span>
               
             </div>
           
@@ -582,6 +582,38 @@
 <p>这些0和1对应着电开关的开与关。就像42是一个十进制数意味着“4 个10s和2个1”，一个二进制数是一系列代表2的幂的二进制数字。本文中，指数意味着一个数乘以自身的次数。10的1次方（10<sup>1</sup>）是10，10的2次方（10<sup>2</sup>）是10X10，10的3次方（10<sup>3</sup>）是10X10X10等等。二进制001是十进制1，二进制0010是十进制2，二进制011是十进制3，二进制0100是十进制4等等。所以，十进制42是二进制101010或者(2 + 8 + 32或2<sup>1</sup>+2<sup>3</sup>+2<sup>5</sup>)。计算程序中并不是使用二进制代表数，通常使用16进制。</p>
 <p>In this base, each digital represents a power of 16. As decimal numbers only go from 0 to 9 the numbers 10 to 15 are represented as a single digit by the letters A, B, C, D, E and F. For example, hexadecimal E is decimal 14 and hexadecimal 2A is decimal 42 (two 16s) + 10). Using the C programming language notation (as I do throughout this book) hexadecimal numbers are prefaced by “0x”; hexadecimal 2A is written as 0x2A .</p>
 <p>十六进制下，每个数字代表16的一次幂。因为10进制数仅从0到9，数字10到15用字母A,B,C,D,E和F代替。例如，十六进制E是十进制14，十六进制2A是十进制42（两个16+10）。使用C编程语言语法（整本书所用）十六进制数以“0x”开头；十六进制2A写作0x2A。</p>
+<p>Microprocessors can perform arithmetic operations such as add, multiply and divide and logical operations such as “is X greater than Y?”.</p>
+<p>微处理器可以执行数学运算，例如加，乘，除和逻辑运算，比如“X是否大于Y？”。</p>
+<p>The processor’s execution is governed by an external clock. This clock, the system clock, generates regular clock pulses to the processor and, at each clock pulse, the processor does some work. For example, a processor could execute an instruction every clock pulse. A processor’s speed is described in terms of the rate of the system clock ticks. A 100Mhz processor will receive 100,000,000 clock ticks every second. It is misleading to describe the power of a CPU by its clock rate as different processors perform different amounts of work per clock tick. However, all things being equal, a faster clock speed means a more powerful processor. The instructions executed by the processor are very simple; for example “read the contents of memory at location X into register Y”. Registers are the microprocessor’s internal storage, used for storing data and performing operations on it. The operations performed may cause the processor to stop what it is doing and jump to another instruction somewhere else in memory. These tiny building blocks give the modern microprocessor almost limitless power as it can execute millions or even billions of instructions a second.</p>
+<p>处理器的运行由外部时钟控制。该时钟（系统时钟）为处理器生成常规时钟脉冲，并且每个脉冲处理器执行一些任务。例如，处理器可以每个脉冲执行一条指令。处理器的速度根据系统时钟周期的速率来描述。100Mhz的处理器有100，000，000个时钟周期。以时钟速率描述CPU的功率有误导性，因为不同的处理器每个时钟周期执行不同的工作量。但是，在所有条件相同下，更快的时钟速度意味着更强大的处理器。处理器执行的指令非常简单，例如，“将内存X处的内存内容读入寄存器Y”。寄存器时处理器的内部存储，用来存储数据和在其上执行操作。执行的操作可能造成处理停止正在执行的操作，跳转到内存中其他位置的零一条指令。这些小的内建存储器给现代微处理器几乎无限可能，因为它可以每秒执行数百万行甚至数十亿的指令。</p>
+<p>The instructions have to be fetched from memory as they are executed. Instructions may themselves reference data within memory and that data must be fetched from memory and saved there when appropriate.</p>
+<p>当指令执行时必须从内存中获取。指令可能它们本身指代内存中的数据，并且必须从存储器中去除数据并在适当时保存在存储器中。</p>
+<p>The size, number and type of register within a microprocessor is entirely dependent on its type. An Intel 4086 processor has a different register set to an Alpha AXP processor; for a start, the Intel’s are 32 bits wide and the Alpha AXP’s are 64 bits wide. In general, though, any given processor will have a number of general purpose registers and a smaller number of dedicated registers. Most processors have the following special purpose, dedicated, registers:</p>
+<p>微处理器中寄存器的大小，数量和类型完全依赖于处理器类型。Intel 4086处理与Alpha AXP处理器有不同的寄存器指令集；一开始，Intel时32位宽，Alpha AXP时64位宽。但是，一般而言，任何给定的寄存器都有一些通用寄存器和较少数量的专用寄存器。大多数处理器具有以下特殊用途，专用寄存器：</p>
+<p><strong>Program Counter (PC)</strong><br>This register contains the address of the next instruction to be executed. The contents of the PC are automatically incremented each time an instruction is fetched,</p>
+<p>这个寄存器包含了吓一跳将要执行的寄存器的地址。PC的值在每次取完指令后自动增加。</p>
+<p><strong>Stack Ppinter (SP)</strong><br>Processors have to have access to large amounts of external read/write random access memory (RAM) which facilitates temporary storage of data. The stack is a way of easily saving and restoring temporary values in external memory. Usually, processors have special instructions which allow you to push values onto the stack and to pop them off again later. The stack works on a last in first out (LIFO) basis. In other words, if you push two values, x and y, onto a stack and then pop a value off of the stack then you will get back the value of y.</p>
+<p>处理器必须能够访问大量的外部读/写随机存储器（RAM），这有助于临时存储数据。堆栈是一种在外部存储器中，轻松保存和恢复临时值地方法。通常，处理器有特殊指令，使你能够将值压入栈并稍后再将其弹出。堆栈以后进先出（LIFO）为基础。换句话说，如果将两个值，x和y，压入对堆栈中，然后从堆栈中弹出一个值，你将得到后压入堆栈中的值y。</p>
+<p>Some processor’s stacks grow upwards towards the top of memory whilst others grow downwards towards the bottom, or base, of memory. Some processor’s support both types, for example ARM.</p>
+<p>一些处理器堆栈向上朝着内存的顶部增长，而其它处理器的堆栈则朝着内存的底部，或基底，向下增长。有些处理器支持两种类型，比如ARM。</p>
+<p><strong>Processor Status (PS)</strong><br>Instructions may yield results; for example “is the content of register X greater than the content of register Y?” will yield true or false as a result. The PS register holds this and other information about the current state of the processor. For example,most processors have at least two modes of operation, kernel (or supervisor) and user. The PS register would hold information identifying the current mode.</p>
+<p>指令可能产生结果；例如，“寄存器X中的值大于寄存器Y中的值吗？”将产生true或false作为结果。PS寄存器保存有关处理器的当前状态的值或其它信息。例如，大多数处理器至少有两种操作模式，内核态（管理员）和用户态。PS寄存器保存着识别当前模式的信息。</p>
+<h2 id="1-2-Memory"><a href="#1-2-Memory" class="headerlink" title="1.2 Memory"></a>1.2 Memory</h2><p>All systems have a memory hierarchy with memory at different speeds and sizes at different points in the hierarchy. The fastest memory is known as cache memory and is what it sounds like - memory that is used to temporarily hold, or cache, contents of the main memory. This sort of memory is very fast but expensive, therefore most processors have a small amount of on-chip cache memory and more system based (on-board) cache memory. Some processors have one cache to contain both instructions and data, but others have two, one for instructions and the other for data. The Alpha AXP processor has two internal memory caches; one for data (the D-Cache) and one for instructions (the I-Cache). The external cache (or B-Cache) mixes the two together. Finally there is the main memory which relative to the external cache memory is very slow. Relative to the on-CPU cache, main memory is positively crawling.</p>
+<p>所有系统都具有内存层次结构，层次结构中不同节点处具有不同速度和大小内存。最快的内存称为高速缓冲存储器，它听起来像是用于临时保存或缓存主存储器内容的寄存器。这种类型的存储器非常快但是很贵，因此大多数处理器只有少量的片上高速缓存和更多的基于系统（板载）的高速缓存。一些处理器有一级高速缓存用于包含指令和数据，但其它类型处理器有两个，一个用于指令，另一个用于数据。Alpha AXP处理器有两个内部存储缓存；一个用于数据（D-Cache），一个用于指令（I-Cache）。外部缓冲（或B-Cache）将两者混在一起。最后存在相对于外部高速缓存很慢的主存中。相对于CPU上的高速缓存，主存相当于在爬行。</p>
+<p>The cache and main memories must be kept in step (coherent). In other words, if a word of main memory is held in one or more locations in cache, then the system must make sure that the contents of cache and memory are the same. The job of cache coherency is done partially by the hardware and partially by the operating system. This is also true for a number of major system tasks where the hardware and software must cooperate closely to achieve their aims.</p>
+<p>高速缓存和主存必须保持一致（协调）。换句话说，如果主存中的一个字保存在高速缓存中的一个或多个位置，则系统必须确保高速缓存和主存中的内容相同。缓存一致性的工作一部分由硬件完成一部分由操作系统完成。对于许多主要系统任务也是如此，其中硬件和软件必须密切合作以实现其共同目标。</p>
+<h2 id="1-3-Buses"><a href="#1-3-Buses" class="headerlink" title="1.3 Buses"></a>1.3 Buses</h2><p>The individual components of the system board are interconnected by multiple connection systems known as buses. The system bus is divided into three logical functions; the address bus, the data bus and the control bus. The address bus specifies the memory locations (addresses) for the data transfers. The data bus holds the data transfered. The data bus is bidirectional; it allows data to be read into the CPU and written from the CPU. The control bus contains various lines used to route timing and control signals throughout the system. Many flavours of bus exist, for example ISA and PCI buses are popular ways of connecting peripherals to the system.</p>
+<p>系统板的各个组件通过称为总线的多个连接系统互连。系统总线分为三个逻辑功能；地址总线，数据总线和控制总线。地址总线指定数据传输的存储器位置（地址）。数据总线保存传输的数据。数据总线是双向的，其可以使数据从CPU读出并从CPU写入。控制总线包含用于在整个系统中路由定时和控制信号的各种线路。存在许多种类的总线，例如，ISA和PCI总线是将外围设备连接到系统的主要方式。</p>
+<h2 id="1-4-Controller-and-Peripherals"><a href="#1-4-Controller-and-Peripherals" class="headerlink" title="1.4 Controller and Peripherals"></a>1.4 Controller and Peripherals</h2><p>Peripherals are real devices, such as graphics cards or disks controlled by controller chips on the system board or on cards plugged into it. The IDE disks are controlled by the IDE controller chip and the SCSI disks by the SCSI disk controller chips and so on. These controllers are connected to the CPU and to each other by a variety of buses. Most systems built now use PCI and ISA buses to connect together the main system components. The controllers are processors like the CPU itself, they can be viewed as intelligent helpers to the CPU. The CPU is in overall control of the system.</p>
+<p>外围设备是真实地设备，例如显卡，或者系统板上由控制芯片控制的磁盘，或者插入系统板上的板卡。IDE磁盘由IDE控制器芯片控制，SCSI磁盘由SCSI磁盘控制器芯片控制，依此类推。这些控制器通过各种总线连接到CPU并且互相连接。现在构建的大多数系统都是用PCI和ISA总线将系统组建连接在一起。控制器是像CPU自身的处理器，可以将它们视为CPU的智能助手。CPU整体上控制着系统。</p>
+<p>All controllers are different, but they usually have registers which control them. Software running on the CPU must be able to read and write those controlling registers. One register might contain status describing an error. Another might be used for control purposes; changing the mode of the controller. Each controller on a bus can be individually addressed by the CPU, this is so that the software device driver can write to its registers and thus control it. The IDE ribbon is a good example, as it gives you the ability to access each drive on the bus separately. Another good example is the PCI bus which allows each device (for example a graphics card) to be accessed independently.</p>
+<p>所有控制器都不同，但是它们通常由控制它们的寄存器。在CPU上运行的软件必须能够读取和写入那些控制寄存器。一个寄存器可能包含描述错误的状态。另一个可能用于控制目的，改变控制器的模式。总线上的每个控制器都可以被CPU单独寻址，这样软件设备驱动程序就可以写入其寄存器并对其进行控制。IDE功能区就是一个很好的例子，因为它能够分别访问总线上的每个驱动器。另一个很好的例子是PCI总线，它允许独立每个设备（例如显卡）.</p>
+<h2 id="1-5-Address-Spaces"><a href="#1-5-Address-Spaces" class="headerlink" title="1.5 Address Spaces"></a>1.5 Address Spaces</h2><p>The system bus connects the CPU with the main memory and is separate from the buses connecting the CPU with the system’s hardware peripherals. Collectively the memory space that the hardware peripherals exist in is known as I/O space. I/O space may itself be further subdivided, but we will not worry too much about that for the moment. The CPU can access both the system space memory and the I/O space memory, whereas the controllers themselves can only access system memory indirectly and then only with the help of the CPU. From the point of view of the device, say the floppy disk controller, it will see only the address space that its control registers are in (ISA), and not the system memory. Typically a CPU will have separate instructions for accessing the memory and I/O space. For example, there might be an instruction that means “read a byte from I/O address 0x3f0 into register X”. This is exactly how the CPU controls the system’s hardware peripherals, by reading and writing to their registers in I/O space. Where in I/O space the common peripherals (IDE controller, serial port, floppy disk controller and so on) have their registers has been set by convention over the years as the PC architecture has developed. The I/O space address 0x3f0 just happens to be the address of one of the serial port’s (COM1) control registers.</p>
+<p>系统总线将CPU与主存储器连接，并与连接CPU和系统硬件外围设备的总线分开。硬件外围设备所在的存储器空间统称为I/O空间。I/O空间本身可以进一步细分，但我们暂时不用过分担心。CPU可以访问系统空间存储器和I/O空间存储器，然而控制器本身只能间接访问系统存储器，然后才能在CPU的帮助下访问系统存储器。从设备的角度来看，比如软盘控制器，它只能看到控制寄存器所在的地址空间（ISA），而不是系统内存。通常，CPU将具有用于访问存储器和I/O空间的单独指令。例如，可能有一条指令意味着“从I/O地址0x3f读取一个字节到寄存器X”。这正是CPU通过读取和写入I/O空间中的寄存器来控制系统硬件外设的方式。在I/O空间中，随着PC架构的发展，常用外设（IDE控制器，串行端口，软盘控制器等）的寄存器已按照惯例设置。I/O空间地址0x3f0恰好是串行端口（COM1）控制寄存器之一的地址。</p>
+<p>There are times when controllers need to read or write large amounts of data directly to or from system memory. For example when user data is being written to the hard disk. In this case, Direct Memory Access (DMA) controllers are used to allow hardware peripherals to directly access system memory but this access is under strict control and supervision of the CPU.</p>
+<p>有时控制器需要直接从系统内存中读取或写入大量数据。例如，当用户数据被写入硬盘时。在这种情况下，直接内存访问（DMA）控制器用于允许硬件外围设备直接访问系统内存，但此访问受到CPU的严格控制和监督。</p>
+<h2 id="1-6-Timers"><a href="#1-6-Timers" class="headerlink" title="1.6 Timers"></a>1.6 Timers</h2><p>All operating systems need to know the time and so the modern PC includes a special peripheral called the Real Time Clock (RTC). This provides two things: a reliable time of day and an accurate timing interval. The RTC has its own battery so that it continues to run even when the PC is not powered on, this is how your PC always “knows” the correct date and time. The interval timer allows the operating system to accurately schedule essential work.</p>
+<p>所有操作系统都需要知道时间，因此现代PC包括一个称为实时时钟（RTC）的特殊外设。主要包括两点：一天中的可靠时间和准确的时间间隔。RTC有自己的电池，这就是为什么PC总是“知道”正确的日期和时间。间隔计时器允许操作系统准确地安排基本工作。</p>
 
       
     </div>
@@ -814,7 +846,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Title-Page"><span class="nav-number">1.</span> <span class="nav-text">Title Page</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">2.</span> <span class="nav-text">Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reader-Profile"><span class="nav-number">2.1.</span> <span class="nav-text">Reader Profile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oganisation-of-this-Book"><span class="nav-number">2.2.</span> <span class="nav-text">Oganisation of this Book</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conventions-used-in-this-Book"><span class="nav-number">2.3.</span> <span class="nav-text">Conventions used in this Book</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-Hardware-Basics"><span class="nav-number">3.</span> <span class="nav-text">Chapter 1 Hardware Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-The-CPU"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 The CPU</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Title-Page"><span class="nav-number">1.</span> <span class="nav-text">Title Page</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">2.</span> <span class="nav-text">Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reader-Profile"><span class="nav-number">2.1.</span> <span class="nav-text">Reader Profile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oganisation-of-this-Book"><span class="nav-number">2.2.</span> <span class="nav-text">Oganisation of this Book</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conventions-used-in-this-Book"><span class="nav-number">2.3.</span> <span class="nav-text">Conventions used in this Book</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-Hardware-Basics"><span class="nav-number">3.</span> <span class="nav-text">Chapter 1 Hardware Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-The-CPU"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 The CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Memory"><span class="nav-number">3.2.</span> <span class="nav-text">1.2 Memory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Buses"><span class="nav-number">3.3.</span> <span class="nav-text">1.3 Buses</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Controller-and-Peripherals"><span class="nav-number">3.4.</span> <span class="nav-text">1.4 Controller and Peripherals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Address-Spaces"><span class="nav-number">3.5.</span> <span class="nav-text">1.5 Address Spaces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Timers"><span class="nav-number">3.6.</span> <span class="nav-text">1.6 Timers</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -853,7 +885,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">35k</span>
+    <span title="站点总字数">47k</span>
   
 
   
@@ -862,7 +894,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">32 分钟</span>
+    <span title="站点阅读时长">43 分钟</span>
   
 </div>
 
