@@ -113,7 +113,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.tldp.org/LDP/tlk/logos/sit3-bwo-tran.1.gif">
 <meta property="og:image" content="http://www.tldp.org/LDP/tlk/basics/board.gif">
-<meta property="og:updated_time" content="2019-01-12T10:28:07.485Z">
+<meta property="og:updated_time" content="2019-01-23T13:25:16.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Linux Kernel">
 <meta name="twitter:description" content="全文翻译自http://www.tldp.org/LDP/tlk/tlk.html  Title PageThis book is for Linux enthusiasts who want to know how the linux kernel works. It is not an internals manual. Rather it describes the principles a">
@@ -422,7 +422,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-12 18:28:07" itemprop="dateModified" datetime="2019-01-12T18:28:07+08:00">2019-01-12</time>
+                <time title="修改时间：2019-01-23 21:25:16" itemprop="dateModified" datetime="2019-01-23T21:25:16+08:00">2019-01-23</time>
               
             
           </span>
@@ -474,7 +474,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">35k</span>
+                <span title="本文字数">39k</span>
               
 
               
@@ -488,7 +488,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">31 分钟</span>
+                <span title="阅读时长">35 分钟</span>
               
             </div>
           
@@ -614,6 +614,19 @@
 <p>有时控制器需要直接从系统内存中读取或写入大量数据。例如，当用户数据被写入硬盘时。在这种情况下，直接内存访问（DMA）控制器用于允许硬件外围设备直接访问系统内存，但此访问受到CPU的严格控制和监督。</p>
 <h2 id="1-6-Timers"><a href="#1-6-Timers" class="headerlink" title="1.6 Timers"></a>1.6 Timers</h2><p>All operating systems need to know the time and so the modern PC includes a special peripheral called the Real Time Clock (RTC). This provides two things: a reliable time of day and an accurate timing interval. The RTC has its own battery so that it continues to run even when the PC is not powered on, this is how your PC always “knows” the correct date and time. The interval timer allows the operating system to accurately schedule essential work.</p>
 <p>所有操作系统都需要知道时间，因此现代PC包括一个称为实时时钟（RTC）的特殊外设。主要包括两点：一天中的可靠时间和准确的时间间隔。RTC有自己的电池，这就是为什么PC总是“知道”正确的日期和时间。间隔计时器允许操作系统准确地安排基本工作。</p>
+<h1 id="Chapter-2-Software-Basics"><a href="#Chapter-2-Software-Basics" class="headerlink" title="Chapter 2 Software Basics"></a>Chapter 2 Software Basics</h1><p>A program is a set of computer instructions that perform a particular task. That program can be written in assembler, a very low level computer language, or in a high level, machine independent language such as the C programming language. An operating system is a special program which allows the user to run applications such as spreadsheets and word processors. This chapter introduces basic programming principles and gives an overview of the aims and functions of an operating system.</p>
+<p>程序是一系列执行特殊任务的计算机指令。程序可以用非常底层的汇编语言编写,或者使用与机器无关的高级语言，如C编程语言编写。操作系统是一个特殊的程序，用户可以利用它运行电子表格和字处理器等应用软件。本章将介绍基本的编程概念，并概述操作系统的目标和功能。</p>
+<h2 id="2-1-Computer-Languages"><a href="#2-1-Computer-Languages" class="headerlink" title="2.1 Computer Languages"></a>2.1 Computer Languages</h2><h3 id="2-1-1-Assembly-Languages"><a href="#2-1-1-Assembly-Languages" class="headerlink" title="2.1.1 Assembly Languages"></a>2.1.1 Assembly Languages</h3><p>The instructions that a CPU fetches from memory and executes are not at all understandable to human beings. They are machine codes which tell the computer precisely what to do. The hexadecimal number 0x89E5 is an Intel 80486 instruction which copies the contents of the ESP register to the EBP register. One of the first software tools invented for the earliest computers was an assembler, a program which takes a human readable source file and assembles it into machine code. Assembly languages explicitly handle registers and operations on data and they are specific to a particular microprocessor. The assembly language for an Intel X86 microprocessor is very different to the assembly language for an Alpha AXP microprocessor. The following Alpha AXP assembly code shows the sort of operations that a program can perform:</p>
+<pre><code>ldr r16, (r15)    ; Line 1
+ldr r17, 4(r15)   ; Line 2
+beq r16,r17,100   ; Line 3
+str r17, (r15)    ; Line 4
+</code></pre><p>100:                  ; Line 5</p>
+<p>CPU从内存中取出并执行的指令根本不是人类可理解的。它们是精确地告诉计算机该做什么的机器码。十六进制数0x89E5是一个Intel 80486指令，它将ESP寄存器中的内容复制到EBP寄存器中。用于早期计算机的第一款软件工具是汇编器，它使用人类可读的源文件将其汇编成机器代码。汇编语言显式处理数据上的寄存器和操作，它们和特定的微处理器相关。用于Intel x86微处理器的汇编语言和用于Alpha AXP微处理的汇编语言有很大的不同。下面的Alpha AXP汇编代码展示了一个程序可以执行的操作：<br>    ldr r16, (r15)    ; Line 1<br>    ldr r17, 4(r15)   ; Line 2<br>    beq r16,r17,100   ; Line 3<br>    str r17, (r15)    ; Line 4<br>100:                  ; Line 5</p>
+<p>The first statement (on line 1) loads register 16 from the address held in register 15. The next instruction loads register 17 from the next location in memory. Line 3 compares the contents of register 16 with that of register 17 and, if they are equal, branches to label 100. If the registers do not contain the same value then the program continues to line 4 where the contents of r17 are saved into memory. If the registers do contain the same value then no data needs to be saved. Assembly level programs are tedious and tricky to write and prone to errors. Very little of the Linux kernel is written in assembly language and those parts that are are written only for efficiency and they are specific to particular microprocessors.</p>
+<p>第一条语句（第1行）从寄存器15中保存的地址加载寄存器16。下一条指令从寄存器中的下一个位置加载寄存器17。第3行指令比较寄存器16和17中的内容，并且如果他们相等，则跳转到到标记100。如果两者的值不相等，程序继续执行第4行，将寄存器17中的内容保存到内存中。如果寄存器含有相同的值，那么没有数据需要保存。汇编级程序编写起来既乏味又棘手，容易出错。很少有Linux内核是用汇编语言编写的，那些部分只是为了提高效率，它们适用于特定的微处理器。</p>
+<h3 id="2-1-2-The-C-Programming-Language-and-Compiler"><a href="#2-1-2-The-C-Programming-Language-and-Compiler" class="headerlink" title="2.1.2 The C Programming Language and Compiler"></a>2.1.2 The C Programming Language and Compiler</h3><p>Writing large programs in assembly language is a difficult and time consuming task. It is prone to error and the resulting program is not portable, being tied to one particular processor family. It is far better to use a machine independent language like C. C allows you to describe programs in terms of their logical algorithms and the data that they operate on. Special programs called compilers read the C program and translate it into assembly language, generating machine specific code from it. A good compiler can generate assembly instructions that are very nearly as efficient as those written by a good assembly programmer. Most of the Linux kernel is written in the C language. The following C fragment:</p>
+<p>用汇编语言编写大型程序很困难，并且非常耗时。汇编程序容易出错，并且不可移植，它与一个特定的处理器系列关联。最好使用像C这样机器独立语言。C可以根据逻辑算法及其操作的数据描述程序。使用编译器读取C程序，然后将其翻译成汇编语言，从中生成机器相关的代码。一个好的汇编器可以生成几乎与一个优秀的汇编程序员编写的汇编指令一样高校的汇编指令。大多数Linux内核都是用C语言编写的。下面的C片段：</p>
 
       
     </div>
@@ -750,7 +763,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -810,7 +823,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -846,7 +861,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Title-Page"><span class="nav-number">1.</span> <span class="nav-text">Title Page</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">2.</span> <span class="nav-text">Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reader-Profile"><span class="nav-number">2.1.</span> <span class="nav-text">Reader Profile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oganisation-of-this-Book"><span class="nav-number">2.2.</span> <span class="nav-text">Oganisation of this Book</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conventions-used-in-this-Book"><span class="nav-number">2.3.</span> <span class="nav-text">Conventions used in this Book</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-Hardware-Basics"><span class="nav-number">3.</span> <span class="nav-text">Chapter 1 Hardware Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-The-CPU"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 The CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Memory"><span class="nav-number">3.2.</span> <span class="nav-text">1.2 Memory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Buses"><span class="nav-number">3.3.</span> <span class="nav-text">1.3 Buses</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Controller-and-Peripherals"><span class="nav-number">3.4.</span> <span class="nav-text">1.4 Controller and Peripherals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Address-Spaces"><span class="nav-number">3.5.</span> <span class="nav-text">1.5 Address Spaces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Timers"><span class="nav-number">3.6.</span> <span class="nav-text">1.6 Timers</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Title-Page"><span class="nav-number">1.</span> <span class="nav-text">Title Page</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">2.</span> <span class="nav-text">Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reader-Profile"><span class="nav-number">2.1.</span> <span class="nav-text">Reader Profile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oganisation-of-this-Book"><span class="nav-number">2.2.</span> <span class="nav-text">Oganisation of this Book</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conventions-used-in-this-Book"><span class="nav-number">2.3.</span> <span class="nav-text">Conventions used in this Book</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-Hardware-Basics"><span class="nav-number">3.</span> <span class="nav-text">Chapter 1 Hardware Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-The-CPU"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 The CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Memory"><span class="nav-number">3.2.</span> <span class="nav-text">1.2 Memory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Buses"><span class="nav-number">3.3.</span> <span class="nav-text">1.3 Buses</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Controller-and-Peripherals"><span class="nav-number">3.4.</span> <span class="nav-text">1.4 Controller and Peripherals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Address-Spaces"><span class="nav-number">3.5.</span> <span class="nav-text">1.5 Address Spaces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-Timers"><span class="nav-number">3.6.</span> <span class="nav-text">1.6 Timers</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-Software-Basics"><span class="nav-number">4.</span> <span class="nav-text">Chapter 2 Software Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Computer-Languages"><span class="nav-number">4.1.</span> <span class="nav-text">2.1 Computer Languages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-Assembly-Languages"><span class="nav-number">4.1.1.</span> <span class="nav-text">2.1.1 Assembly Languages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-The-C-Programming-Language-and-Compiler"><span class="nav-number">4.1.2.</span> <span class="nav-text">2.1.2 The C Programming Language and Compiler</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -885,7 +900,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">47k</span>
+    <span title="站点总字数">51k</span>
   
 
   
@@ -894,7 +909,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">43 分钟</span>
+    <span title="站点阅读时长">47 分钟</span>
   
 </div>
 
